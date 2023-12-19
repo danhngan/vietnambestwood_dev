@@ -1,0 +1,78 @@
+version: '3.1'
+
+services:
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: web_user
+      WORDPRESS_DB_PASSWORD_FILE: /run/secrets/db_password
+      WORDPRESS_DB_NAME: web_db
+      WORDPRESS_TABLE_PREFIX: web_
+    volumes:
+      - wordpress:/var/www/html
+    secrets:
+      - db_password
+    networks:
+      - web
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: web_db
+      MYSQL_USER: web_user
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+    volumes:
+      - db:/var/lib/mysql
+    secrets:
+      - db_root_password
+      - db_password
+    networks:
+      - web
+
+  phpadmin:
+    image: phpmyadmin
+    ports:
+      - 8081:80
+    environment:
+      PMA_USER: web_user
+      PMA_PASSWORD_FILE: /run/secrets/db_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      PMA_HOST: db
+      PMA_PORT: 3306
+    # secrets:
+    #   - db_root_password
+    #   - db_password
+    networks:
+      - web
+
+volumes:
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      device: "/e/tung_web/vietnambestwood/web_data/wp_data"
+      o: bind
+  db:
+    driver: local
+    driver_opts:
+      type: none
+      device: "/e/tung_web/vietnambestwood/web_data/database"
+      o: bind
+
+secrets:
+  db_password:
+    file: db_password.txt
+  db_root_password:
+    file: db_password.txt
+
+
+networks:
+  web:
+    driver: bridge
