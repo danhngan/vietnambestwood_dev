@@ -129,5 +129,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
 }
 
+define( 'WP_HOME', 'http://local.vietnambestwood.com' );
+define( 'WP_SITEURL', 'http://local.vietnambestwood.com' );
+
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';

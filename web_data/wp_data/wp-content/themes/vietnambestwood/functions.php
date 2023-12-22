@@ -12,14 +12,14 @@
  * Register block styles.
  */
 
-if ( ! function_exists( 'twentytwentyfour_block_styles' ) ) :
+if ( ! function_exists( 'vietnambestwood_block_styles' ) ) :
 	/**
 	 * Register custom block styles
 	 *
 	 * @since Twenty Twenty-Four 1.0
 	 * @return void
 	 */
-	function twentytwentyfour_block_styles() {
+	function vietnambestwood_block_styles() {
 
 		register_block_style(
 			'core/details',
@@ -144,20 +144,20 @@ if ( ! function_exists( 'twentytwentyfour_block_styles' ) ) :
 	}
 endif;
 
-add_action( 'init', 'twentytwentyfour_block_styles' );
+add_action( 'init', 'vietnambestwood_block_styles' );
 
 /**
  * Enqueue block stylesheets.
  */
 
-if ( ! function_exists( 'twentytwentyfour_block_stylesheets' ) ) :
+if ( ! function_exists( 'vietnambestwood_block_stylesheets' ) ) :
 	/**
 	 * Enqueue custom block stylesheets
 	 *
 	 * @since Twenty Twenty-Four 1.0
 	 * @return void
 	 */
-	function twentytwentyfour_block_stylesheets() {
+	function vietnambestwood_block_stylesheets() {
 		/**
 		 * The wp_enqueue_block_style() function allows us to enqueue a stylesheet
 		 * for a specific block. These will only get loaded when the block is rendered
@@ -169,29 +169,47 @@ if ( ! function_exists( 'twentytwentyfour_block_stylesheets' ) ) :
 		wp_enqueue_block_style(
 			'core/button',
 			array(
-				'handle' => 'twentytwentyfour-button-style-outline',
+				'handle' => 'vietnambestwood-button-style-outline',
 				'src'    => get_parent_theme_file_uri( 'assets/css/button-outline.css' ),
 				'ver'    => wp_get_theme( get_template() )->get( 'Version' ),
 				'path'   => get_parent_theme_file_path( 'assets/css/button-outline.css' ),
 			)
 		);
+		wp_enqueue_block_style(
+			'core/paragraph',
+			array(
+				'handle' => 'vietnambestwood-paragraph-style-outline',
+				'src'    => get_parent_theme_file_uri( 'assets/css/paragraph.css' ),
+				'ver'    => wp_get_theme( get_template() )->get( 'Version' ),
+				'path'   => get_parent_theme_file_path( 'assets/css/paragraph.css' ),
+			)
+		);
+		wp_enqueue_block_style(
+			'core/post-content',
+			array(
+				'handle' => 'vietnambestwood-content-style-outline',
+				'src'    => get_parent_theme_file_uri( 'assets/css/post-content.css' ),
+				'ver'    => wp_get_theme( get_template() )->get( 'Version' ),
+				'path'   => get_parent_theme_file_path( 'assets/css/post-content.css' ),
+			)
+		);
 	}
 endif;
 
-add_action( 'init', 'twentytwentyfour_block_stylesheets' );
+add_action( 'init', 'vietnambestwood_block_stylesheets' );
 
 /**
  * Register pattern categories.
  */
 
-if ( ! function_exists( 'twentytwentyfour_pattern_categories' ) ) :
+if ( ! function_exists( 'vietnambestwood_pattern_categories' ) ) :
 	/**
 	 * Register pattern categories
 	 *
 	 * @since Twenty Twenty-Four 1.0
 	 * @return void
 	 */
-	function twentytwentyfour_pattern_categories() {
+	function vietnambestwood_pattern_categories() {
 
 		register_block_pattern_category(
 			'page',
@@ -203,4 +221,5 @@ if ( ! function_exists( 'twentytwentyfour_pattern_categories' ) ) :
 	}
 endif;
 
-add_action( 'init', 'twentytwentyfour_pattern_categories' );
+add_action( 'init', 'vietnambestwood_pattern_categories' );
+
