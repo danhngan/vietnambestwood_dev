@@ -107,7 +107,7 @@ $table_prefix = getenv_docker('WORDPRESS_TABLE_PREFIX', 'wp_');
  *
  * @link https://wordpress.org/documentation/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', !!getenv_docker('WORDPRESS_DEBUG', '') );
+define( 'WP_DEBUG', true );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
@@ -131,6 +131,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'WP_HOME', 'http://local.vietnambestwood.com' );
 define( 'WP_SITEURL', 'http://local.vietnambestwood.com' );
+// Enable WP_DEBUG mode
+// define( 'WP_DEBUG', true );
 
+// Enable Debug logging to the /wp-content/debug.log file
+define( 'WP_DEBUG_LOG', true );
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';

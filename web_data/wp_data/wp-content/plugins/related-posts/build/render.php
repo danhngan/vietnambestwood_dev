@@ -24,7 +24,8 @@ $current_post = get_post();
 // echo implode(',', get_post_class());
 $related_posts = new RelatedPost( $current_post );
 $related_posts->render();
-echo implode(',', array_keys($attributes));
-echo get_block_wrapper_attributes();
+echo implode(',',WP_Theme_JSON_Resolver::get_style_variations()[0]['settings']['color']['palette']['theme'][0]);
+
+
 ?>
 </div>
