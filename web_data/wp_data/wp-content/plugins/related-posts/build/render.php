@@ -24,8 +24,10 @@ $current_post = get_post();
 // echo implode(',', get_post_class());
 $related_posts = new RelatedPost( $current_post );
 $related_posts->render();
-echo implode(',',WP_Theme_JSON_Resolver::get_style_variations()[0]['settings']['color']['palette']['theme'][0]);
-
-
+$theme_array = WP_Theme_JSON_Resolver::get_theme_data()->get_data();
+foreach ($theme_array['settings']['color']['palette'] as $color){
+    echo implode(',',$color);
+};
+// get type of object
 ?>
 </div>

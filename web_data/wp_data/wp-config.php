@@ -136,5 +136,6 @@ define( 'WP_SITEURL', 'http://local.vietnambestwood.com' );
 
 // Enable Debug logging to the /wp-content/debug.log file
 define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_DISPLAY', false );
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
