@@ -1,0 +1,10 @@
+$widget_class: 'related-post-article-vnbw';
+$column_class: 'related-post-vnbw-column';
+$text_color: var(--wp--preset--color--black);
+$back_ground_color: var(--wp--preset--color--accent-4);
+
+:global(.#{$widget_class}) {
+    position: relative;
+    margin-bottom: 15px;
+    background-color: #{$back_ground_color};
+}

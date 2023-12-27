@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/related-posts",
+  "version": "0.1.0",
+  "title": "Related Posts",
+  "category": "widgets",
+  "description": "Display your site's copyright date.",
+  "example": {},
+  "attributes": {
+    "numberOfPosts": {
+      "type": "number",
+      "default": 5
+    }
+  },
+  "supports": {
+    "html": false,
+    "typography": {
+      "fontFamily": true
+    },
+    "color": {
+      "text": true
+    }
+  },
+  "textdomain": "related-posts",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./edit.scss",
+  "viewScript": "file:./view.js",
+  "style": "file:./view.css",
+  "render": "file:./render.php"
+}
