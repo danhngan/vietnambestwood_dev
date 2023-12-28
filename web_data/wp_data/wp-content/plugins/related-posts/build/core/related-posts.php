@@ -34,6 +34,5 @@ class RelatedPostsInCategory{
             echo get_the_post_thumbnail($related_post->ID, 'thumbnail');
         }}
 }
-
 }
 ?>

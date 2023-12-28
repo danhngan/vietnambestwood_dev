@@ -7,7 +7,7 @@
  * @package block-development-examples
  */
 ?>
-<div><?php
+<div class="<?php echo 'related-posts'?>"><?php
 require __DIR__ . '/core/related-posts.php';
 require __DIR__ . '/core/base.php';
 
@@ -19,8 +19,6 @@ $current_post = get_post();
 // 	$categories_id[] = $category->term_id;
 // }
 // $categories_id = implode(',', $categories_id);
-
-
 // echo implode(',', get_post_class());
 $related_posts = new RelatedPost( $current_post );
 $related_posts->render();
@@ -28,6 +26,5 @@ $theme_array = WP_Theme_JSON_Resolver::get_theme_data()->get_data();
 foreach ($theme_array['settings']['color']['palette'] as $color){
     echo implode(',',$color);
 };
-// get type of object
 ?>
 </div>

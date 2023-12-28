@@ -8,36 +8,6 @@ class RelatedPostClassName {
     public $thumbnail_wrapper_class = 'related-post-thumbnail-wrapper-vnbw';
 }?>
 
-<?php 
-// class StyleHandler{
-//     public function __construct(){
-        
-//     }
-
-//     public function insert_to_head(){
-//         if (!function_exists('register_related_posts_style')) {
-//             // if not, create one
-//             function register_related_posts_style() {
-//                 // Register styles in WordPress
-//                 wp_register_style('prefix-basic-css', get_template_directory_uri(). '/css/basic-style.css');
-   
-//                 // Register styles in WordPress
-//                 wp_register_style('first-css', get_template_directory_uri(). '/css/first-style.css');
-   
-//                 // Register styles in WordPress
-//                 wp_register_style('second-css', get_template_directory_uri(). '/css/second-style.css');
-   
-//         // TODO check if post type
-//         wp_enqueue_style('second-css'); 
-   
-//        }
-//     }
-//     add_action('wp_enqueue_scripts', 'register_related_posts_style');
-//     }
-// }
-?>
-
-
 <?php
 class RelatedPost {
     public $post;
@@ -69,7 +39,6 @@ class RelatedPost {
         </div>
         <div class="<?php echo apply_filters('related_post_post_title_class',$this->class_name_instance->post_title_class);?>">
         <a class="<?php echo apply_filters('related_post_post_title_class',$this->class_name_instance->post_title_class);?>" href="<?php echo get_permalink($this->ID);?>">
-        <?php echo $this->post_title;?>
         </a>
         </div>
         </article>
