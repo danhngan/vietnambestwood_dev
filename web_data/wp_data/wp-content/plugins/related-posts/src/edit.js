@@ -20,7 +20,7 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#inspectorcontrols
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * Imports the necessary components that will be used to create
@@ -30,7 +30,7 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @see https://developer.wordpress.org/block-editor/reference-guides/components/text-control/
  * @see https://developer.wordpress.org/block-editor/reference-guides/components/toggle-control/
  */
-
+import { PanelBody, TextControl, ToggleControl, __experimentalNumberControl as NumberControl } from '@wordpress/components';
 /**
  * Imports the useEffect React Hook. This is used to set an attribute when the
  * block is loaded in the Editor.
@@ -38,6 +38,8 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @see https://react.dev/reference/react/useEffect
  */
 import { useSelect } from '@wordpress/data';
+import { useEffect } from 'react';
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -50,16 +52,28 @@ import { useSelect } from '@wordpress/data';
  *
  * @return {Element} Element to render.
  */
-export default function Edit(attributes, setAttributes) {
-	const blockProps = useBlockProps();
-	console.log(blockProps);
+export default function Edit(props) {
+	const { attributes, className, setAttributes } = props;
+	let { numberOfPosts } = attributes;
 
 	return (
-		<p {...useBlockProps()}>
-			{__(
-				'Dynamic related posts',
-				'related-posts'
-			)}
-		</p>
+		<>
+			<InspectorControls>
+				<PanelBody
+					title={__('Settings', 'block-related-post-nop')}
+				>
+					<NumberControl
+						label={__(
+							'Number of posts',
+							'block-related-post-nop'
+						)}
+						value={numberOfPosts}
+						onChange={(value) => setAttributes({ numberOfPosts: value })}
+
+					/>
+				</PanelBody>
+			</InspectorControls>
+			<p {...useBlockProps()}>© Dynamic block</p>
+		</>
 	);
 }

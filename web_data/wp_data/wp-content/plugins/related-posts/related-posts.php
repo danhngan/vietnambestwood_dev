@@ -43,7 +43,7 @@ if ( ! wp_script_is( 'jquery', 'enqueued' )) {
 }
 
 function request_related_posts_handle(){
-	// check_ajax_referer('related_posts_widget_nonce');
+	check_ajax_referer('related_posts_widget_nonce');
 	$post_id = $_POST['post_id'];
 	$res = get_related_posts($post_id);
 	wp_send_json($res);
