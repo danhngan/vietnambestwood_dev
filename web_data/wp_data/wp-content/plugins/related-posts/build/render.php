@@ -8,8 +8,8 @@
  */
 ?>
 <div class="<?php echo 'related-posts'?>"><?php
-require __DIR__ . '/core/related-posts.php';
-require __DIR__ . '/core/base.php';
+require_once __DIR__ . '/core/related-posts.php';
+require_once __DIR__ . '/core/base.php';
 
 $current_post = get_post();
 // Current post categories
