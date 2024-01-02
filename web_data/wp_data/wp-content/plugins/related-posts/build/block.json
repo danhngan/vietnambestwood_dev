@@ -11,6 +11,10 @@
     "numberOfPosts": {
       "type": "number",
       "default": 5
+    },
+    "blockId": {
+      "type": "string",
+      "default": ""
     }
   },
   "supports": {

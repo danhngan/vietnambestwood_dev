@@ -54,7 +54,12 @@ import { useEffect } from 'react';
  */
 export default function Edit(props) {
 	const { attributes, className, setAttributes } = props;
-	let { numberOfPosts } = attributes;
+	let { numberOfPosts, blockId } = attributes;
+	useEffect(() => {
+		if (blockId == '') {
+			setAttributes({ blockId: Math.random().toString(16).slice(2) });
+		}
+	}, [blockId, setAttributes]);
 
 	return (
 		<>
@@ -68,7 +73,9 @@ export default function Edit(props) {
 							'block-related-post-nop'
 						)}
 						value={numberOfPosts}
-						onChange={(value) => setAttributes({ numberOfPosts: value })}
+						onChange={(value) => setAttributes({
+							numberOfPosts: value
+						})}
 
 					/>
 				</PanelBody>

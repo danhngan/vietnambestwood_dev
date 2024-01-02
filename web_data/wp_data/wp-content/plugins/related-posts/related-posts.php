@@ -45,8 +45,9 @@ if ( ! wp_script_is( 'jquery', 'enqueued' )) {
 function request_related_posts_handle(){
 	check_ajax_referer('related_posts_widget_nonce');
 	$post_id = $_POST['post_id'];
+	$blocks_ids = $_POST['blocks_ids'];
 	$res = get_related_posts($post_id);
-	wp_send_json($res);
+	wp_send_json(array('related_posts'=>'','blocks_ids'=>$blocks_ids));
 }
 add_action('wp_ajax_nopriv_request_related_posts', 'request_related_posts_handle');
 add_action('wp_ajax_request_related_posts', 'request_related_posts_handle');
