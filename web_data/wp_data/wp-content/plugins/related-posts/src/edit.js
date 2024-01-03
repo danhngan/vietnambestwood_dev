@@ -54,7 +54,7 @@ import { useEffect } from 'react';
  */
 export default function Edit(props) {
 	const { attributes, className, setAttributes } = props;
-	let { numberOfPosts, blockId } = attributes;
+	let { numberOfPosts, blockId, showThumbnail } = attributes;
 	useEffect(() => {
 		if (blockId == '') {
 			setAttributes({ blockId: Math.random().toString(16).slice(2) });

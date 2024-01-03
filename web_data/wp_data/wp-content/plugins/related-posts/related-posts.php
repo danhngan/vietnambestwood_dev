@@ -12,7 +12,7 @@
  *
  * @package           create-block
  */
-require (__DIR__.'/build/core/ajax-handler.php');
+require_once (__DIR__.'/build/core/ajax-handler.php');
 
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -47,7 +47,7 @@ function request_related_posts_handle(){
 	$post_id = $_POST['post_id'];
 	$blocks_ids = $_POST['blocks_ids'];
 	$res = get_related_posts($post_id);
-	wp_send_json(array('related_posts'=>'','blocks_ids'=>$blocks_ids));
+	wp_send_json($res);
 }
 add_action('wp_ajax_nopriv_request_related_posts', 'request_related_posts_handle');
 add_action('wp_ajax_request_related_posts', 'request_related_posts_handle');

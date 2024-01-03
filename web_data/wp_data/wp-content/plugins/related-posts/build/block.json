@@ -15,6 +15,10 @@
     "blockId": {
       "type": "string",
       "default": ""
+    },
+    "showThumbnail": {
+      "type": "boolean",
+      "default": true
     }
   },
   "supports": {

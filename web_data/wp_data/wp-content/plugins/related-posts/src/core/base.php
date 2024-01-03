@@ -14,30 +14,34 @@ return $theme_array;
 //     public $thumbnail_class = 'related-post-thumbnail-vnbw';
 //     public $thumbnail_wrapper_class = 'related-post-thumbnail-wrapper-vnbw';
 // }
+
+$BLOCK_ATTRIBUTES = array('numberOfPosts', 'showThumbnail', 'blockId');
 class PostBrief {
     public $post;
     public $show_thumbnail;
     public $id;
-    public $link;
-    public $post_title;
+    public $url;
+    public $title;
+    public $thumbnail_tag;
     public function __construct($post, $show_thumbnail = true){
         $this->post = $post;
         $this->show_thumbnail = $show_thumbnail;
-        $this->id = $post->id;
-        $this->post_title = $post->post_title;
-        $this->link = get_permalink($this->id);
+        $this->id = $post->ID;
+        $this->title = $post->post_title;
+        $this->url = get_permalink($this->id);
+        $this->thumbnail_tag = $this->_get_post_thumbnail();
     }
     public function get_data(){
         $data = array();
         $data['id'] = $this->id;
-        $data['post_title'] = $this->post_title;
+        $data['title'] = $this->title;
         if ($this->show_thumbnail){
-            $data['thumbnail'] = $this->_get_post_thumbnail();
+            $data['thumbnail_tag'] = $this->thumbnail_tag;
         }
         else{
-            $data['thumbnail'] = '';
+            $data['thumbnail_tag'] = '';
         }
-        $data['link'] = $this->link;
+        $data['url'] = $this->url;
         return $data;
     }
     private function _get_post_thumbnail(){
