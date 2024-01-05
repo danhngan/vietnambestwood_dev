@@ -61,20 +61,20 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: "/e/tung_web/vietnambestwood/web_data/wp_data"
+      device: "../web_data/wp_data"
       o: bind
   db:
     driver: local
     driver_opts:
       type: none
-      device: "/e/tung_web/vietnambestwood/web_data/database"
+      device: "../web_data/database"
       o: bind
 
 secrets:
   db_password:
-    file: db_password.txt
+    file: ./db_password.txt
   db_root_password:
-    file: db_password.txt
+    file: ./db_password.txt
 
 
 networks:
