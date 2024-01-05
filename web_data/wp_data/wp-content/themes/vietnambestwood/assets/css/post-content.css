@@ -2,7 +2,7 @@
     --regular--font--size: 1.2em;
 }
 
-p {
+main p {
     text-align: justify;
     margin-block-end: 0.5em !important;
     font-size: var(--regular--font--size);
