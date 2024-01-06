@@ -89,7 +89,7 @@
 					"slug": "gradient-1"
 				},
 				{
-					"gradient": "linear-gradient(to bottom, #C2A990 0%, #F9F9F9 100%)",
+					"gradient": "linear-gradient(to bottom, var(--wp--preset--color--contrast-2) 30%, var(--wp--preset--color--accent) 100%)",
 					"name": "Vertical soft sandstone to white",
 					"slug": "gradient-2"
 				},
