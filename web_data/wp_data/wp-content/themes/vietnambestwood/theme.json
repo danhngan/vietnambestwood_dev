@@ -84,7 +84,7 @@
 			],
 			"gradients": [
 				{
-					"gradient": "linear-gradient(to bottom, #cfcabe 0%, #F9F9F9 100%)",
+					"gradient": "linear-gradient(to bottom, var(--wp--preset--color--contrast-3) 0%, #F9F9F9 100%)",
 					"name": "Vertical soft beige to white",
 					"slug": "gradient-1"
 				},
@@ -161,12 +161,12 @@
 					"slug": "contrast"
 				},
 				{
-					"color": "#636363",
+					"color": "#003060",
 					"name": "Contrast / Two",
 					"slug": "contrast-2"
 				},
 				{
-					"color": "#A4A4A4",
+					"color": "#055C9D",
 					"name": "Contrast / Three",
 					"slug": "contrast-3"
 				},
@@ -936,7 +936,7 @@
 			},
 			"heading": {
 				"color": {
-					"text": "var(--wp--preset--color--contrast)"
+					"text": "var(--wp--preset--color--contrast-2)"
 				},
 				"spacing": {
 					"padding": {
