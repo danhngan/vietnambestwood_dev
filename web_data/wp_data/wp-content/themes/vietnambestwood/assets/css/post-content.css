@@ -28,3 +28,12 @@ h5,
 h6 {
     color: var(--wp--preset--color--contrast-2);
 }
+
+.highlight-content-block {
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12),
+        0px 2px 2px 0px rgba(0, 0, 0, 0.12),
+        0px 4px 4px 0px rgba(0, 0, 0, 0.12),
+        0px 8px 8px 0px rgba(0, 0, 0, 0.12),
+        0px 16px 16px 0px rgba(0, 0, 0, 0.12);
+}
