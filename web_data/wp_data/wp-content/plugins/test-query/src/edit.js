@@ -4,6 +4,15 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
 import { __ } from '@wordpress/i18n';
+/**
+ * Imports the necessary components that will be used to create
+ * the user interface for the block's settings.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/components/panel/#panelbody
+ * @see https://developer.wordpress.org/block-editor/reference-guides/components/text-control/
+ * @see https://developer.wordpress.org/block-editor/reference-guides/components/toggle-control/
+ */
+import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +20,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -31,8 +40,8 @@ import './editor.scss';
  */
 export default function Edit() {
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Test Query – hello from the editor!', 'test-query' ) }
-		</p>
+		<div {...useBlockProps()}>
+			<InnerBlocks />
+		</div>
 	);
 }
