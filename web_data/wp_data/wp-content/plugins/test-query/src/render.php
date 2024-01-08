@@ -7,7 +7,8 @@
 <div <?php echo get_block_wrapper_attributes(); ?>>
 	<?php esc_html_e('Test Query – hello from a dynamic block!', 'test-query'); ?>
 	<div>
-		<?php echo json_encode($block->inner_blocks->current()); ?>
-
+		<?php echo render_block($block->inner_blocks->current()->parsed_block); ?>
+		<?php echo gettype($block->inner_blocks->next()); ?>
+		this is test
 	</div>
 </div>
