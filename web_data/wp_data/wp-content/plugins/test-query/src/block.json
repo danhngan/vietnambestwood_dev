@@ -4,17 +4,64 @@
 	"name": "create-block/test-query",
 	"version": "0.1.0",
 	"title": "Test Query",
-	"category": "widgets",
+	"category": "theme",
 	"icon": "smiley",
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
-	"supports": {
-		"html": false
+	"attributes": {
+		"queryId": {
+			"type": "number"
+		},
+		"query": {
+			"type": "object",
+			"default": {
+				"perPage": 5,
+				"pages": 0,
+				"offset": 0,
+				"postType": "post",
+				"order": "desc",
+				"orderBy": "date",
+				"author": "",
+				"search": "",
+				"exclude": [],
+				"sticky": "",
+				"inherit": false,
+				"taxQuery": {
+					"category": [
+						5
+					]
+				},
+				"parents": []
+			}
+		},
+		"tagName": {
+			"type": "string",
+			"default": "div"
+		},
+		"namespace": {
+			"type": "string"
+		},
+		"enhancedPagination": {
+			"type": "boolean",
+			"default": false
+		}
 	},
-	"textdomain": "test-query",
+	"providesContext": {
+		"queryId": "queryId",
+		"query": "query",
+		"displayLayout": "displayLayout",
+		"enhancedPagination": "enhancedPagination"
+	},
+	"supports": {
+		"align": [
+			"wide",
+			"full"
+		],
+		"html": false,
+		"layout": true
+	},
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css",
-	"render": "file:./render.php",
-	"viewScript": "file:./view.js"
+	"editorStyle": "wp-block-query-editor",
+	"style": "wp-block-query",
+	"viewScript": "file:./view.min.js"
 }

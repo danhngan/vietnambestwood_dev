@@ -4,7 +4,10 @@
 	"name": "core/post-template",
 	"title": "Post Template",
 	"category": "theme",
-	"parent": [ "core/query" ],
+	"parent": [
+		"core/query",
+		"create-block/test-query"
+	],
 	"description": "Contains the block elements used to render a post, like the title, date, featured image, content or excerpt, and more.",
 	"textdomain": "default",
 	"usesContext": [
@@ -19,7 +22,10 @@
 	"supports": {
 		"reusable": false,
 		"html": false,
-		"align": [ "wide", "full" ],
+		"align": [
+			"wide",
+			"full"
+		],
 		"layout": true,
 		"color": {
 			"gradients": true,

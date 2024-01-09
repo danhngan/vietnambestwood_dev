@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Server-side rendering of the `core/query` block.
  *
@@ -16,13 +17,14 @@
  *
  * @return string Returns the modified output of the query block.
  */
-function render_block_core_query( $attributes, $content, $block ) {
-	if ( $attributes['enhancedPagination'] && isset( $attributes['queryId'] ) ) {
-		$p = new WP_HTML_Tag_Processor( $content );
-		if ( $p->next_tag() ) {
+function render_block_core_query($attributes, $content, $block)
+{
+	if ($attributes['enhancedPagination'] && isset($attributes['queryId'])) {
+		$p = new WP_HTML_Tag_Processor($content);
+		if ($p->next_tag()) {
 			// Add the necessary directives.
-			$p->set_attribute( 'data-wp-interactive', true );
-			$p->set_attribute( 'data-wp-navigation-id', 'query-' . $attributes['queryId'] );
+			$p->set_attribute('data-wp-interactive', true);
+			$p->set_attribute('data-wp-navigation-id', 'query-' . $attributes['queryId']);
 			// Use context to send translated strings.
 			$p->set_attribute(
 				'data-wp-context',
@@ -30,8 +32,8 @@ function render_block_core_query( $attributes, $content, $block ) {
 					array(
 						'core' => array(
 							'query' => array(
-								'loadingText' => __( 'Loading page, please wait.' ),
-								'loadedText'  => __( 'Page Loaded.' ),
+								'loadingText' => __('Loading page, please wait.'),
+								'loadedText'  => __('Page Loaded.'),
 							),
 						),
 					),
@@ -44,7 +46,7 @@ function render_block_core_query( $attributes, $content, $block ) {
 			$block->block_type->supports['interactivity'] = true;
 
 			// Add a div to announce messages using `aria-live`.
-			$last_div_position = strripos( $content, '</div>' );
+			$last_div_position = strripos($content, '</div>');
 			$content           = substr_replace(
 				$content,
 				'<div
@@ -64,34 +66,34 @@ function render_block_core_query( $attributes, $content, $block ) {
 	}
 
 	$view_asset = 'wp-block-query-view';
-	if ( ! wp_script_is( $view_asset ) ) {
+	if (!wp_script_is($view_asset)) {
 		$script_handles = $block->block_type->view_script_handles;
 		// If the script is not needed, and it is still in the `view_script_handles`, remove it.
 		if (
-			( ! $attributes['enhancedPagination'] || ! isset( $attributes['queryId'] ) )
-			&& in_array( $view_asset, $script_handles, true )
+			(!$attributes['enhancedPagination'] || !isset($attributes['queryId']))
+			&& in_array($view_asset, $script_handles, true)
 		) {
-			$block->block_type->view_script_handles = array_diff( $script_handles, array( $view_asset ) );
+			$block->block_type->view_script_handles = array_diff($script_handles, array($view_asset));
 		}
 		// If the script is needed, but it was previously removed, add it again.
-		if ( $attributes['enhancedPagination'] && isset( $attributes['queryId'] ) && ! in_array( $view_asset, $script_handles, true ) ) {
-			$block->block_type->view_script_handles = array_merge( $script_handles, array( $view_asset ) );
+		if ($attributes['enhancedPagination'] && isset($attributes['queryId']) && !in_array($view_asset, $script_handles, true)) {
+			$block->block_type->view_script_handles = array_merge($script_handles, array($view_asset));
 		}
 	}
 
 	$style_asset = 'wp-block-query';
-	if ( ! wp_style_is( $style_asset ) ) {
+	if (!wp_style_is($style_asset)) {
 		$style_handles = $block->block_type->style_handles;
 		// If the styles are not needed, and they are still in the `style_handles`, remove them.
 		if (
-			( ! $attributes['enhancedPagination'] || ! isset( $attributes['queryId'] ) )
-			&& in_array( $style_asset, $style_handles, true )
+			(!$attributes['enhancedPagination'] || !isset($attributes['queryId']))
+			&& in_array($style_asset, $style_handles, true)
 		) {
-			$block->block_type->style_handles = array_diff( $style_handles, array( $style_asset ) );
+			$block->block_type->style_handles = array_diff($style_handles, array($style_asset));
 		}
 		// If the styles are needed, but they were previously removed, add them again.
-		if ( $attributes['enhancedPagination'] && isset( $attributes['queryId'] ) && ! in_array( $style_asset, $style_handles, true ) ) {
-			$block->block_type->style_handles = array_merge( $style_handles, array( $style_asset ) );
+		if ($attributes['enhancedPagination'] && isset($attributes['queryId']) && !in_array($style_asset, $style_handles, true)) {
+			$block->block_type->style_handles = array_merge($style_handles, array($style_asset));
 		}
 	}
 
@@ -105,22 +107,24 @@ function render_block_core_query( $attributes, $content, $block ) {
  *
  * @global WP_Scripts $wp_scripts
  */
-function block_core_query_ensure_interactivity_dependency() {
+function block_core_query_ensure_interactivity_dependency()
+{
 	global $wp_scripts;
 	if (
-		isset( $wp_scripts->registered['wp-block-query-view'] ) &&
-		! in_array( 'wp-interactivity', $wp_scripts->registered['wp-block-query-view']->deps, true )
+		isset($wp_scripts->registered['wp-block-query-view']) &&
+		!in_array('wp-interactivity', $wp_scripts->registered['wp-block-query-view']->deps, true)
 	) {
 		$wp_scripts->registered['wp-block-query-view']->deps[] = 'wp-interactivity';
 	}
 }
 
-add_action( 'wp_print_scripts', 'block_core_query_ensure_interactivity_dependency' );
+add_action('wp_print_scripts', 'block_core_query_ensure_interactivity_dependency');
 
 /**
  * Registers the `core/query` block on the server.
  */
-function register_block_core_query() {
+function register_block_core_query()
+{
 	register_block_type_from_metadata(
 		__DIR__ . '/query',
 		array(
@@ -128,7 +132,7 @@ function register_block_core_query() {
 		)
 	);
 }
-add_action( 'init', 'register_block_core_query' );
+add_action('init', 'register_block_core_query');
 
 /**
  * Traverse the tree of blocks looking for any plugin block (i.e., a block from
@@ -141,7 +145,8 @@ add_action( 'init', 'register_block_core_query' );
  * @param array $parsed_block The block being rendered.
  * @return string Returns the parsed block, unmodified.
  */
-function block_core_query_disable_enhanced_pagination( $parsed_block ) {
+function block_core_query_disable_enhanced_pagination($parsed_block)
+{
 	static $enhanced_query_stack   = array();
 	static $dirty_enhanced_queries = array();
 	static $render_query_callback  = null;
@@ -150,13 +155,13 @@ function block_core_query_disable_enhanced_pagination( $parsed_block ) {
 
 	if (
 		'core/query' === $block_name &&
-		isset( $parsed_block['attrs']['enhancedPagination'] ) &&
+		isset($parsed_block['attrs']['enhancedPagination']) &&
 		true === $parsed_block['attrs']['enhancedPagination'] &&
-		isset( $parsed_block['attrs']['queryId'] )
+		isset($parsed_block['attrs']['queryId'])
 	) {
 		$enhanced_query_stack[] = $parsed_block['attrs']['queryId'];
 
-		if ( ! isset( $render_query_callback ) ) {
+		if (!isset($render_query_callback)) {
 			/**
 			 * Filter that disables the enhanced pagination feature during block
 			 * rendering when a plugin block has been found inside. It does so
@@ -167,48 +172,48 @@ function block_core_query_disable_enhanced_pagination( $parsed_block ) {
 			 * @param array    $block    The full block, including name and attributes.
 			 * @return string Returns the modified output of the query block.
 			 */
-			$render_query_callback = static function ( $content, $block ) use ( &$enhanced_query_stack, &$dirty_enhanced_queries, &$render_query_callback ) {
+			$render_query_callback = static function ($content, $block) use (&$enhanced_query_stack, &$dirty_enhanced_queries, &$render_query_callback) {
 				$has_enhanced_pagination =
-					isset( $block['attrs']['enhancedPagination'] ) &&
+					isset($block['attrs']['enhancedPagination']) &&
 					true === $block['attrs']['enhancedPagination'] &&
-					isset( $block['attrs']['queryId'] );
+					isset($block['attrs']['queryId']);
 
-				if ( ! $has_enhanced_pagination ) {
+				if (!$has_enhanced_pagination) {
 					return $content;
 				}
 
-				if ( isset( $dirty_enhanced_queries[ $block['attrs']['queryId'] ] ) ) {
-					$p = new WP_HTML_Tag_Processor( $content );
-					if ( $p->next_tag() ) {
-						$p->set_attribute( 'data-wp-navigation-disabled', 'true' );
+				if (isset($dirty_enhanced_queries[$block['attrs']['queryId']])) {
+					$p = new WP_HTML_Tag_Processor($content);
+					if ($p->next_tag()) {
+						$p->set_attribute('data-wp-navigation-disabled', 'true');
 					}
 					$content = $p->get_updated_html();
-					$dirty_enhanced_queries[ $block['attrs']['queryId'] ] = null;
+					$dirty_enhanced_queries[$block['attrs']['queryId']] = null;
 				}
 
-				array_pop( $enhanced_query_stack );
+				array_pop($enhanced_query_stack);
 
-				if ( empty( $enhanced_query_stack ) ) {
-					remove_filter( 'render_block_core/query', $render_query_callback );
+				if (empty($enhanced_query_stack)) {
+					remove_filter('render_block_core/query', $render_query_callback);
 					$render_query_callback = null;
 				}
 
 				return $content;
 			};
 
-			add_filter( 'render_block_core/query', $render_query_callback, 10, 2 );
+			add_filter('render_block_core/query', $render_query_callback, 10, 2);
 		}
 	} elseif (
-		! empty( $enhanced_query_stack ) &&
-		isset( $block_name ) &&
-		( ! str_starts_with( $block_name, 'core/' ) || 'core/post-content' === $block_name )
+		!empty($enhanced_query_stack) &&
+		isset($block_name) &&
+		(!str_starts_with($block_name, 'core/') || 'core/post-content' === $block_name)
 	) {
-		foreach ( $enhanced_query_stack as $query_id ) {
-			$dirty_enhanced_queries[ $query_id ] = true;
+		foreach ($enhanced_query_stack as $query_id) {
+			$dirty_enhanced_queries[$query_id] = true;
 		}
 	}
 
 	return $parsed_block;
 }
 
-add_filter( 'render_block_data', 'block_core_query_disable_enhanced_pagination', 10, 1 );
+add_filter('render_block_data', 'block_core_query_disable_enhanced_pagination', 10, 1);
