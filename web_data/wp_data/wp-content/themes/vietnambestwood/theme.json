@@ -332,29 +332,29 @@
 				},
 				{
 					"fluid": {
-						"max": "1.85rem",
-						"min": "1.39rem"
+						"max": "1.55rem",
+						"min": "1.25rem"
 					},
 					"name": "Large",
-					"size": "1.85rem",
+					"size": "1.35rem",
 					"slug": "large"
 				},
 				{
 					"fluid": {
-						"max": "2.5rem",
-						"min": "1.85rem"
+						"max": "2.0rem",
+						"min": "1.55rem"
 					},
 					"name": "Extra Large",
-					"size": "2.5rem",
+					"size": "2.0rem",
 					"slug": "x-large"
 				},
 				{
 					"fluid": {
-						"max": "3.27rem",
-						"min": "2.5rem"
+						"max": "3.0rem",
+						"min": "2.0rem"
 					},
 					"name": "Extra Extra Large",
-					"size": "3.27rem",
+					"size": "2.8rem",
 					"slug": "xx-large"
 				}
 			],
