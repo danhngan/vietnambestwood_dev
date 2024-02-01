@@ -358,7 +358,8 @@
 					"slug": "xx-large"
 				}
 			],
-			"writingMode": true
+			"writingMode": true,
+			"fontWeight": true
 		},
 		"useRootPaddingAwareAlignments": true
 	},
@@ -384,6 +385,9 @@
 							}
 						}
 					}
+				},
+				"typography": {
+					"fontWeight": "200"
 				}
 			},
 			"core/buttons": {
@@ -982,7 +986,7 @@
 			"fontFamily": "var(--wp--preset--font-family--body)",
 			"fontSize": "var(--wp--preset--font-size--medium)",
 			"fontStyle": "normal",
-			"fontWeight": "400",
+			"fontWeight": "300",
 			"lineHeight": "1.55"
 		}
 	},
