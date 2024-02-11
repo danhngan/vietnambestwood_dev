@@ -61,13 +61,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: "/home/danhngan/workspace/projects/web/vietnambestwood_dev/web_data/wp_data"
+      device: "/home/ngan/workspace/vietnambestwood_dev/web_data/wp_data"
       o: bind
   db:
     driver: local
     driver_opts:
       type: none
-      device: "/home/danhngan/workspace/projects/web/vietnambestwood_dev/web_data/database"
+      device: "/home/ngan/workspace/vietnambestwood_dev/web_data/database"
       o: bind
 
 secrets:
