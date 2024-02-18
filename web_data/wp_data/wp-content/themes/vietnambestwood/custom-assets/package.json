@@ -1,0 +1,25 @@
+{
+  "name": "custom-assets",
+  "version": "1.0.0",
+  "description": "custom styles and js of vietnambestwood theme",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"no test\"",
+    "start": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "keywords": [
+    "style"
+  ],
+  "author": "danhngan",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^6.10.0",
+    "mini-css-extract-plugin": "^2.8.0",
+    "sass": "^1.71.0",
+    "sass-loader": "^14.1.0",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.90.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
