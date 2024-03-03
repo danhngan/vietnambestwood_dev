@@ -9,14 +9,14 @@ main p {
 }
 
 
-li {
+main li {
     text-align: justify;
     margin-block-end: 0.25em !important;
     font-size: var(--regular--font--size);
 }
 
-ul,
-ol {
+main ul,
+main ol {
     margin-block-end: 0.25em !important;
 }
 

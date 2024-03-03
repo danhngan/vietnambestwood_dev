@@ -1,0 +1,32 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/product-feature",
+	"version": "0.1.0",
+	"title": "Product Feature",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Product feature",
+	"example": {},
+	"supports": {
+		"html": false,
+		"typography": {
+			"fontFamily": true
+		},
+		"color": {
+			"text": true
+		}
+	},
+	"attributes": {
+		"numberOfAttrs": {
+			"type": "number",
+			"default": 5
+		}
+	},
+	"textdomain": "product-feature",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}
