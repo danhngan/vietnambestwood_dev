@@ -105,6 +105,9 @@ class Custom_Meta_Box {
             </tbody>
         </table>
     </div>
+    <div>
+        <button id="submit_<?php echo $this->box_id;?>_btn" type="button">Submit</button>
+    </div>
 	<?php
     }
     public function register_scripts(){
@@ -115,7 +118,7 @@ class Custom_Meta_Box {
         // enqueue only for specific post types
         if (in_array($screen->post_type, ['post'])) {
             // enqueue script
-            wp_enqueue_script($this->box_id.'_scripts', $this->script_path, ['jquery']);
+            wp_enqueue_script($this->box_id.'_scripts', $this->script_path, ['jquery'],'1.01');
             // localize script, create a custom js object
             wp_localize_script(
                 $this->box_id.'_scripts',
@@ -124,9 +127,26 @@ class Custom_Meta_Box {
                     'url' => admin_url('admin-ajax.php'),
                     'box_id' => $this->box_id,
                     'box_title' => $this->box_title,
+                    'action' => $this->box_id.'_save',
+                    'meta_field' => $this->meta_field_id
                 ]
             );
         }
 }
+}
+    public function ajax_handler() {
+    // Handle the ajax request here
+    if ( array_key_exists( 'data', $_POST ) ) {
+        $post_id = (int) $_POST['post_ID'];
+        if ( current_user_can( 'edit_post', $post_id ) ) {
+            update_post_meta(
+                $post_id,
+                $this->meta_field_id,
+                $_POST['data']
+            );
+        }
+    }
+ 
+    wp_die(); // All ajax handlers die when finished
 }
 }

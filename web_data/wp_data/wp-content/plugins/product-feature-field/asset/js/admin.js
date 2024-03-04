@@ -41,11 +41,40 @@ function adRow(table) {
 
 }
 
-function processProductKeyValFeature(e) {
+function processAddFeature(e) {
     var table = document.getElementById(field_obj.box_id + '_table')
     adRow(table)
 }
 
+
+function getFieldData(table) {
+    let rows = table.getElementsByTagName('tr')
+    const rowValues = [];
+
+    // Loop through each row
+    for (const row of rows) {
+        // Get all data cells (assuming class "data-cell")
+        const dataKey = row.querySelector('[id^=key]').value;
+        const dataVal = row.querySelector('[id^=val]').value;
+        rowValues.push({ key: dataKey, val: dataVal })
+    }
+    return rowValues
+}
+
+function sendDataToServer(e, $) {
+    const table = document.getElementById(field_obj.box_id + '_table');
+    const data = getFieldData(table);
+    $.post(field_obj.url,                        // or ajaxurl
+        {
+            action: field_obj.action,                // POST data, action
+            data: data, // POST data, wporg_field_value
+            post_ID: jQuery('#post_ID').val()           // The ID of the post currently being edited
+        }, function (data) {
+            // handle response data
+            alert('Data submitted!');
+        }
+    );
+}
 
 (function ($, window, document) {
     'use strict';
@@ -54,7 +83,10 @@ function processProductKeyValFeature(e) {
         // js 'change' event triggered on the wporg_field form field
         $('#add_new_' + field_obj.box_id + '_btn').on('click', function (e) {
             console.log('changed');
-            processProductKeyValFeature(e)
+            processAddFeature(e)
+        });
+        $('#submit_' + field_obj.box_id + '_btn').on('click', function (e) {
+            sendDataToServer(e, $);
         });
 
     });

@@ -27,6 +27,9 @@ $product_box = new Custom_Meta_Box($box_id, $box_title, $script_path);
 
 add_action( 'add_meta_boxes', [$product_box,'add'] );
 
-add_action( 'save_post', [$product_box,'save'] );
+// add_action( 'save_post', [$product_box,'save'] );
 
 add_action('admin_enqueue_scripts', [$product_box,'register_scripts']);
+
+add_action( 'wp_ajax_'.$box_id.'_save', [$product_box,'ajax_handler'] );
+ 
