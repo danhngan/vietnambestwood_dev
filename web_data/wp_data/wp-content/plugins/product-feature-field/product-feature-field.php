@@ -32,4 +32,20 @@ add_action( 'add_meta_boxes', [$product_box,'add'] );
 add_action('admin_enqueue_scripts', [$product_box,'register_scripts']);
 
 add_action( 'wp_ajax_'.$box_id.'_save', [$product_box,'ajax_handler'] );
- 
+
+
+$media_box_id = 'product_media';
+$media_box_title = 'Product media';
+$media_script_path = plugin_dir_url(__FILE__) . 'asset/js/media.js';
+
+$media_box = new Custom_Media_Box($media_box_id, $media_box_title, $media_script_path);
+
+
+
+add_action( 'add_meta_boxes', [$media_box,'add'] );
+
+add_action( 'save_post', [$media_box,'save'] );
+
+add_action('admin_enqueue_scripts', [$media_box,'register_scripts']);
+
+// add_action( 'wp_ajax_'.$media_box_id.'_save', [$media_box,'ajax_handler'] );
