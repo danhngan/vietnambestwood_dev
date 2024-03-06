@@ -40,7 +40,8 @@ class Custom_Media_Field {
         $output = '<tr><th scope="row">'.$this->field_name.'</th>';
         $output .= '<td>';
         $output .= '<img src="'.$this->field_val.'" draggable="false" alt="" width="150" height="150">';
-        $output .= '</td></tr>';
+        $output .= '</td>';
+        $output .= '<td><button id="'.$this->field_id.'_close_btn'.'" type="button" class="dismiss-media-btn btn">Dismiss</button></td></tr>';
         return $output;
     }
 }
@@ -117,13 +118,13 @@ class Custom_Meta_Box {
     </div>
     <div>
         <table id="<?php echo $this->box_id;?>_table">
-            <tbody>
+        <tbody>
                 <?php 
                 foreach ($fields as $field){
                     echo $field->to_row();
                     }
                 ?>
-            </tbody>
+        </tbody>
         </table>
     </div>
     <div>
@@ -139,7 +140,7 @@ class Custom_Meta_Box {
         // enqueue only for specific post types
         if (in_array($screen->post_type, ['post'])) {
             // enqueue script
-            wp_enqueue_script($this->box_id.'_scripts', $this->script_path, ['jquery'],'1.01');
+            wp_enqueue_script($this->box_id.'_scripts', $this->script_path, ['jquery'],'1.07');
             // localize script, create a custom js object
             wp_localize_script(
                 $this->box_id.'_scripts',
@@ -242,7 +243,7 @@ class Custom_Media_Box {
     <div>
         <button id="<?php echo $this->box_id.'_upload';?>" type="button"><?php _e('Upload Image'); ?></button>
     </div>
-    <table>
+    <table id="<?php echo $this->box_id.'_table';?>">
         <tbody>
         <?php 
         foreach ($fields as $field){
@@ -262,11 +263,11 @@ class Custom_Media_Box {
         wp_enqueue_media();
         if (in_array($screen->post_type, ['post'])) {
             // enqueue script
-            wp_enqueue_script($this->box_id.'_scripts', $this->script_path, ['jquery'],'1.01');
+            wp_enqueue_script($this->box_id.'_scripts', $this->script_path, ['jquery'],'0.091');
             // localize script, create a custom js object
             wp_localize_script(
                 $this->box_id.'_scripts',
-                'field_obj',
+                'media_obj',
                 [
                     'url' => admin_url('admin-ajax.php'),
                     'box_id' => $this->box_id,

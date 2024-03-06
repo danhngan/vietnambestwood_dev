@@ -42,7 +42,7 @@ function adRow(table) {
 }
 
 function processAddFeature(e) {
-    var table = document.getElementById(field_obj.box_id + '_table')
+    var table = document.getElementById(field_obj.box_id + '_table').getElementsByTagName('tbody')[0]
     adRow(table)
 }
 
@@ -79,8 +79,10 @@ function sendDataToServer(e, $) {
 (function ($, window, document) {
     'use strict';
     // execute when the DOM is ready
+
     $(document).ready(function () {
         // js 'change' event triggered on the wporg_field form field
+        console.log('add_new_' + field_obj.box_id + '_btn');
         $('#add_new_' + field_obj.box_id + '_btn').on('click', function (e) {
             console.log('changed');
             processAddFeature(e)
