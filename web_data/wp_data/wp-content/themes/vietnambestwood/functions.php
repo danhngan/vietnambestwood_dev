@@ -234,35 +234,4 @@ add_action('init', 'vietnambestwood_pattern_categories');
 // 		register_block_pattern( 'Test product',
 // 		array());
 // 	}
-
-add_action('acf/init', 'my_acf_init');
-function my_acf_init() {
-    
-    // check function exists
-	error_log('test');
-	error_log(function_exists('acf_register_block'));
-    if( function_exists('acf_register_block') ) {
-        
-        // register a testimonial block
-        acf_register_block(array(
-            'name'              => 'product-features',
-            'title'             => __('Product features'),
-            'description'       => __('For product posts.'),
-            'render_callback'   => 'product_features_render_callback',
-            'category'          => 'text',
-            'icon'              => 'admin-comments',
-            'keywords'          => array( 'text', 'quote' ),
-        ));
-    }
-}
-
-function product_features_render_callback( $block ) {
-    
-    // convert name ("acf/testimonial") into path friendly slug ("testimonial")
-    $slug = str_replace('acf/', '', $block['name']);
-    
-    // include a template part from within the "template-parts/block" folder
-    if( file_exists( get_theme_file_path("/template-parts/block/content-{$slug}.php") ) ) {
-        include( get_theme_file_path("/template-parts/block/content-{$slug}.php") );
-    }
-}
+add_image_size( 'product-image-size', 900, 900, true );

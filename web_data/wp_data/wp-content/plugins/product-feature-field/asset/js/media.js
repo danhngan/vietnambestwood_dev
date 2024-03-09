@@ -65,6 +65,35 @@ function postSelectionProcessing(url) {
 
 }
 
+
+function getMediaData(table) {
+    let rows = table.getElementsByTagName('img')
+    const rowValues = [];
+
+    // Loop through each row
+    for (const img of rows) {
+        // Get all data cells (assuming class "data-cell")
+        const dataVal = img.getAttribute('src');
+        rowValues.push(dataVal)
+    }
+    return rowValues
+}
+
+function sendMediaLinkToServer(e, $) {
+    const table = document.getElementById(media_obj.box_id + '_table');
+    const data = getMediaData(table);
+    $.post(media_obj.url,                        // or ajaxurl
+        {
+            action: media_obj.action,                // POST data, action
+            data: data,
+            post_ID: jQuery('#post_ID').val()           // The ID of the post currently being edited
+        }, function (data) {
+            // handle response data
+            alert('Media submitted!');
+        }
+    );
+}
+
 (function ($, window, document) {
     'use strict';
     // execute when the DOM is ready
@@ -88,6 +117,11 @@ function postSelectionProcessing(url) {
                 postSelectionProcessing(getRelativeURLOfFile(attachment.url));
             })
                 .open();
+        });
+
+        $('#submit_' + media_obj.box_id + '_btn').on('click', function (e) {
+            console.log('submitting media');
+            sendMediaLinkToServer(e, $);
         });
 
     });

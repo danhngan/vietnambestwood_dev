@@ -140,7 +140,7 @@ class Custom_Meta_Box {
         // enqueue only for specific post types
         if (in_array($screen->post_type, ['post'])) {
             // enqueue script
-            wp_enqueue_script($this->box_id.'_scripts', $this->script_path, ['jquery'],'1.07');
+            wp_enqueue_script($this->box_id.'_scripts', $this->script_path, ['jquery'],'1.00');
             // localize script, create a custom js object
             wp_localize_script(
                 $this->box_id.'_scripts',
@@ -252,6 +252,9 @@ class Custom_Media_Box {
         ?>
         </tbody>
     </table>
+    <div>
+        <button id="submit_<?php echo $this->box_id;?>_btn" type="button">Submit</button>
+    </div>
 	<?php
     }
     public function register_scripts(){
@@ -263,7 +266,7 @@ class Custom_Media_Box {
         wp_enqueue_media();
         if (in_array($screen->post_type, ['post'])) {
             // enqueue script
-            wp_enqueue_script($this->box_id.'_scripts', $this->script_path, ['jquery'],'0.091');
+            wp_enqueue_script($this->box_id.'_scripts', $this->script_path, ['jquery'],'1.00');
             // localize script, create a custom js object
             wp_localize_script(
                 $this->box_id.'_scripts',

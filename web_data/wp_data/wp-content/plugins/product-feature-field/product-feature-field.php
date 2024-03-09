@@ -44,8 +44,8 @@ $media_box = new Custom_Media_Box($media_box_id, $media_box_title, $media_script
 
 add_action( 'add_meta_boxes', [$media_box,'add'] );
 
-add_action( 'save_post', [$media_box,'save'] );
+// add_action( 'save_post', [$media_box,'save'] );
 
 add_action('admin_enqueue_scripts', [$media_box,'register_scripts']);
 
-// add_action( 'wp_ajax_'.$media_box_id.'_save', [$media_box,'ajax_handler'] );
+add_action( 'wp_ajax_'.$media_box_id.'_save', [$media_box,'ajax_handler'] );
