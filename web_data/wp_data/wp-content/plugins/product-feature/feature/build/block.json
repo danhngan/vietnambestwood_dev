@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/product-feature",
+  "version": "0.1.2",
+  "title": "Product Feature",
+  "category": "widgets",
+  "icon": "info",
+  "description": "Product feature",
+  "example": {},
+  "supports": {
+    "html": false,
+    "align": true,
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true
+    },
+    "color": {
+      "background": true,
+      "text": true,
+      "button": true,
+      "heading": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "attributes": {
+    "domain": {
+      "type": "string",
+      "default": "http://local.vietnambestwood.com"
+    }
+  },
+  "textdomain": "product-feature",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}

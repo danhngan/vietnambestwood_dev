@@ -7,16 +7,17 @@ function dismissMedia(e) {
 }
 
 
-function getRelativeURLOfFile(url) {
-    if (url.startsWith('/')) {
-        return url
-    }
-    else if (url.startsWith('http')) {
-        return '/' + url.split('/').slice(3).join('/')
-    }
-    else {
-        return '/' + url.split('/').slice(1).join('/')
-    }
+function processURL(url) {
+    return url
+    // if (url.startsWith('/')) {
+    //     return url
+    // }
+    // else if (url.startsWith('http')) {
+    //     return '/' + url.split('/').slice(3).join('/')
+    // }
+    // else {
+    //     return '/' + url.split('/').slice(1).join('/')
+    // }
 }
 
 function addImageRow(url, table, $) {
@@ -114,7 +115,7 @@ function sendMediaLinkToServer(e, $) {
                 multiple: false
             }).on('select', function () {
                 let attachment = uploader.state().get('selection').first().toJSON();
-                postSelectionProcessing(getRelativeURLOfFile(attachment.url));
+                postSelectionProcessing(processURL(attachment.url));
             })
                 .open();
         });

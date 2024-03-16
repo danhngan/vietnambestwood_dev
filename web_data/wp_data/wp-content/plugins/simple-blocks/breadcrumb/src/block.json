@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/breadcrumb",
+	"version": "0.1.2",
+	"title": "Breadcrumb",
+	"category": "widgets",
+	"icon": "info",
+	"description": "Breadcrumb",
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": true,
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		},
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"textdomain": "breadcrumb",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}

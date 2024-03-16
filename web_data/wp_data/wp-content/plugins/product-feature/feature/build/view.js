@@ -1,0 +1,1 @@
+(()=>{var e;e=jQuery,document,window,e(document).ready((()=>{console.log("test feature")}))})();

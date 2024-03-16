@@ -13,6 +13,8 @@
  * Register block styles.
  */
 
+include(__DIR__.'/widget/breadcrumb.php');
+
 if (!function_exists('vietnambestwood_block_styles')) :
 	/**
 	 * Register custom block styles
@@ -228,10 +230,4 @@ endif;
 
 add_action('init', 'vietnambestwood_pattern_categories');
 
-// if (!function_exists('vietnambestwood_block_pattern')) :
-// 	function vietnambestwood_block_pattern(){
-
-// 		register_block_pattern( 'Test product',
-// 		array());
-// 	}
-add_image_size( 'product-image-size', 900, 900, true );
+add_theme_support( 'menus' );

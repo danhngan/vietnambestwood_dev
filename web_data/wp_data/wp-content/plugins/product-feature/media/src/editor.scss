@@ -1,0 +1,33 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-product-media {
+	border: 1px dotted #f00;
+}
+
+.main-image-div {
+	position: relative;
+	width: 100%;
+}
+
+.product-media-gallery-div {
+	position: relative;
+}
+
+.product-image.in-gallery {
+	box-sizing: border-box;
+	display: inline-block;
+	padding: 5px;
+	width: 25%;
+}
+
+.product-image.main-image {
+	display: block;
+	object-fit: contain;
+	object-position: center;
+	width: 100%;
+	height: 100%;
+}

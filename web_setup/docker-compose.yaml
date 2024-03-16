@@ -44,6 +44,8 @@ services:
     image: phpmyadmin
     ports:
       - 8080:80
+    depends_on:
+      - wordpress
     environment:
       PMA_USER: web_user
       PMA_PASSWORD_FILE: /run/secrets/db_password

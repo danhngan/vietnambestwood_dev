@@ -1,1 +1,0 @@
-console.log("Hello World! (from create-block-product-feature block)");

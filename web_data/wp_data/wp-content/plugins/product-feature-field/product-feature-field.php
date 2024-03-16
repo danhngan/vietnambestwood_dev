@@ -18,20 +18,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once 'asset/php/classes.php';
 
-$box_id = 'product_feature';
-$box_title = 'Product Feature';
-$script_path = plugin_dir_url(__FILE__) . 'asset/js/admin.js';
+if (!has_image_size('product-image-size')){
+	add_image_size( 'product-image-size', 900, 900, true );
+}
 
-$product_box = new Custom_Meta_Box($box_id, $box_title, $script_path);
+if (!has_image_size('product-image-medium-size')){
+	add_image_size( 'product-image-medium-size', 600, 600, true );
+}
 
 
-add_action( 'add_meta_boxes', [$product_box,'add'] );
+// $box_id = 'product_feature';
+// $box_title = 'Product Feature';
+// $script_path = plugin_dir_url(__FILE__) . 'asset/js/admin.js';
 
-// add_action( 'save_post', [$product_box,'save'] );
+// $product_box = new Custom_Meta_Box($box_id, $box_title, $script_path);
 
-add_action('admin_enqueue_scripts', [$product_box,'register_scripts']);
 
-add_action( 'wp_ajax_'.$box_id.'_save', [$product_box,'ajax_handler'] );
+// add_action( 'add_meta_boxes', [$product_box,'add'] );
+
+// // add_action( 'save_post', [$product_box,'save'] );
+
+// add_action('admin_enqueue_scripts', [$product_box,'register_scripts']);
+
+// add_action( 'wp_ajax_'.$box_id.'_save', [$product_box,'ajax_handler'] );
 
 
 $media_box_id = 'product_media';

@@ -28,18 +28,20 @@ class Custom_Media_Field {
     public $field_id;
     public $field_name;
     public $field_val;
+    public $img_tag;
 
 
     public function __construct($field_id,$field_name,$field_val){
         $this->field_id = $field_id;
         $this->field_name = $field_name;
         $this->field_val = $field_val;
+        $this->img_tag = '<img src="'.wp_get_attachment_image_src( $field_val, 'full' )[0].'" alt="" width="150px" height="150px">';
     }
 
     public function to_row(){
         $output = '<tr><th scope="row">'.$this->field_name.'</th>';
         $output .= '<td>';
-        $output .= '<img src="'.$this->field_val.'" draggable="false" alt="" width="150" height="150">';
+        $output .= $this->img_tag;
         $output .= '</td>';
         $output .= '<td><button id="'.$this->field_id.'_close_btn'.'" type="button" class="dismiss-media-btn btn">Dismiss</button></td></tr>';
         return $output;
@@ -213,7 +215,7 @@ class Custom_Media_Box {
             $post_id,
             $this->meta_field_id,
             array(
-                '/wp-content/uploads/2023/12/footer-back-ground-300x206.jpg'
+                70,164,178
             )
         );
 		// if ( array_key_exists( $this->meta_field_id, $_POST ) ) {
@@ -266,7 +268,7 @@ class Custom_Media_Box {
         wp_enqueue_media();
         if (in_array($screen->post_type, ['post'])) {
             // enqueue script
-            wp_enqueue_script($this->box_id.'_scripts', $this->script_path, ['jquery'],'1.00');
+            wp_enqueue_script($this->box_id.'_scripts', $this->script_path, ['jquery'],'1.02');
             // localize script, create a custom js object
             wp_localize_script(
                 $this->box_id.'_scripts',
@@ -282,6 +284,14 @@ class Custom_Media_Box {
         }
 }
 }
+    private function _image_urls_to_attachment_ids($data){
+        $res = array();
+        foreach ($data as $url){
+            $res[] = attachment_url_to_postid($url);
+        };
+        return $res;
+    }
+
     public function ajax_handler() {
     // Handle the ajax request here
     if ( array_key_exists( 'data', $_POST ) ) {
@@ -290,7 +300,7 @@ class Custom_Media_Box {
             update_post_meta(
                 $post_id,
                 $this->meta_field_id,
-                $_POST['data']
+                $this->_image_urls_to_attachment_ids($_POST['data'])
             );
         }
     }

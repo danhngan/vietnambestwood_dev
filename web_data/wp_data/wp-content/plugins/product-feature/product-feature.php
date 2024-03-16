@@ -1,30 +1,23 @@
 <?php
 /**
  * Plugin Name:       Product Feature
- * Description:       Example block scaffolded with Create Block tool.
+ * Description:       Product Feature
  * Requires at least: 6.1
  * Requires PHP:      7.0
- * Version:           0.1.0
+ * Version:           0.1.1
  * Author:            The WordPress Contributors
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       product-feature
  *
- * @package           create-block
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+function product_media_init() {
+	$block = register_block_type( __DIR__ . '/media/build');
 }
+add_action( 'init', 'product_media_init' );
 
-/**
- * Registers the block using the metadata loaded from the `block.json` file.
- * Behind the scenes, it registers also all assets so they can be enqueued
- * through the block editor in the corresponding context.
- *
- * @see https://developer.wordpress.org/reference/functions/register_block_type/
- */
-function product_feature_product_feature_block_init() {
-	register_block_type( __DIR__ . '/build' );
+function product_feature_init() {
+	$block = register_block_type( __DIR__ . '/feature/build');
 }
-add_action( 'init', 'product_feature_product_feature_block_init' );
+add_action( 'init', 'product_feature_init' );
