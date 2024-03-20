@@ -327,7 +327,7 @@
 				{
 					"fluid": false,
 					"name": "Medium",
-					"size": "1.05rem",
+					"size": "1.15rem",
 					"slug": "medium"
 				},
 				{
@@ -336,7 +336,7 @@
 						"min": "1.15rem"
 					},
 					"name": "Large",
-					"size": "1.15rem",
+					"size": "1.35rem",
 					"slug": "large"
 				},
 				{
@@ -345,7 +345,7 @@
 						"min": "1.35rem"
 					},
 					"name": "Extra Large",
-					"size": "1.5rem",
+					"size": "1.7rem",
 					"slug": "x-large"
 				},
 				{
@@ -354,7 +354,7 @@
 						"min": "1.8rem"
 					},
 					"name": "Extra Extra Large",
-					"size": "1.8rem",
+					"size": "1.9rem",
 					"slug": "xx-large"
 				}
 			],
@@ -920,12 +920,14 @@
 			"h1": {
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--xx-large)",
-					"lineHeight": "1.15"
+					"lineHeight": "1.15",
+					"fontWeight": "600"
 				}
 			},
 			"h2": {
 				"typography": {
-					"fontSize": "var(--wp--preset--font-size--x-large)"
+					"fontSize": "var(--wp--preset--font-size--x-large)",
+					"fontWeight": "500"
 				}
 			},
 			"h3": {
@@ -971,7 +973,7 @@
 					}
 				},
 				"color": {
-					"text": "var(--wp--preset--color--contrast)"
+					"text": "var(--wp--preset--color--contrast-2)"
 				}
 			}
 		},

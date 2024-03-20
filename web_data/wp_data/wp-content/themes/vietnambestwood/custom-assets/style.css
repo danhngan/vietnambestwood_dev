@@ -1,0 +1,16 @@
+@media (min-width:600px) {
+    .home-navigator {
+        margin-top: -50px !important;
+        position: absolute;
+    }
+}
+
+.home-navigator {
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100%);
+}
+
+.home-card {
+    box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1);
+}

@@ -231,3 +231,18 @@ endif;
 add_action('init', 'vietnambestwood_pattern_categories');
 
 add_theme_support( 'menus' );
+
+
+/**
+ * Registers a stylesheet.
+ */
+function register_vietnambestwood_font_styles() {
+	// wp_register_style( 'vietnambestwood_styles', get_template_directory_uri() . '/custom-assets/style.css'  );
+	wp_register_style( 'vietnambestwood_styles', get_template_directory_uri() . '/custom-assets/style.css' , array(), '0.0.2');
+	wp_enqueue_style( 'vietnambestwood_styles' );
+}
+
+add_action('wp_enqueue_scripts', 'register_vietnambestwood_font_styles');
+
+
+// Register style sheet.
