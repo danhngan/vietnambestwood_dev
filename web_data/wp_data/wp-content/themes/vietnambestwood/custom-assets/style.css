@@ -27,6 +27,10 @@
     overflow: hidden;
 }
 
+.has-zoom-effect div{
+    overflow: hidden;
+}
+
 .has-zoom-effect:hover img {
 	transform: scale(1.3);
 }

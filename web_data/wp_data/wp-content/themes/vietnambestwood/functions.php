@@ -238,7 +238,7 @@ add_theme_support( 'menus' );
  */
 function register_vietnambestwood_font_styles() {
 	// wp_register_style( 'vietnambestwood_styles', get_template_directory_uri() . '/custom-assets/style.css'  );
-	wp_register_style( 'vietnambestwood_styles', get_template_directory_uri() . '/custom-assets/style.css' , array(), '0.0.6');
+	wp_register_style( 'vietnambestwood_styles', get_template_directory_uri() . '/custom-assets/style.css' , array(), '0.0.7');
 	wp_enqueue_style( 'vietnambestwood_styles' );
 }
 

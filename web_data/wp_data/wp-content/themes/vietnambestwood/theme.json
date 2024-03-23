@@ -358,8 +358,8 @@
 					"slug": "xx-large"
 				}
 			],
-			"writingMode": true,
-			"fontWeight": true
+			"fontWeight": true,
+			"writingMode": true
 		},
 		"useRootPaddingAwareAlignments": true
 	},
@@ -371,6 +371,9 @@
 				}
 			},
 			"core/button": {
+				"typography": {
+					"fontWeight": "200"
+				},
 				"variations": {
 					"outline": {
 						"border": {
@@ -385,9 +388,6 @@
 							}
 						}
 					}
-				},
-				"typography": {
-					"fontWeight": "200"
 				}
 			},
 			"core/buttons": {
@@ -920,8 +920,8 @@
 			"h1": {
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--xx-large)",
-					"lineHeight": "1.15",
-					"fontWeight": "600"
+					"fontWeight": "600",
+					"lineHeight": "1.15"
 				}
 			},
 			"h2": {
