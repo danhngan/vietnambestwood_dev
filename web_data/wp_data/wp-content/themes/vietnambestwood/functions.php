@@ -238,8 +238,10 @@ add_theme_support( 'menus' );
  */
 function register_vietnambestwood_font_styles() {
 	// wp_register_style( 'vietnambestwood_styles', get_template_directory_uri() . '/custom-assets/style.css'  );
-	wp_register_style( 'vietnambestwood_styles', get_template_directory_uri() . '/custom-assets/style.css' , array(), '0.0.7');
+	wp_register_style( 'vietnambestwood_styles', get_template_directory_uri() . '/custom-assets/style.css' , array(), '0.0.8.9');
 	wp_enqueue_style( 'vietnambestwood_styles' );
+	wp_register_script( 'vietnambestwood_scripts', get_template_directory_uri() . '/custom-assets/main.js' , array(), '0.0.1.7');
+	wp_enqueue_script( 'vietnambestwood_scripts' );
 }
 
 add_action('wp_enqueue_scripts', 'register_vietnambestwood_font_styles');

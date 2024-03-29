@@ -34,3 +34,22 @@
 .has-zoom-effect:hover img {
 	transform: scale(1.3);
 }
+
+
+.text-intro-effect p,
+.text-intro-effect h1,
+.text-intro-effect h2,
+.text-intro-effect h3 {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s, transform 0.5s ease;
+}
+
+
+.text-intro-effect p.visible,
+.text-intro-effect h1.visible,
+.text-intro-effect h2.visible, 
+.text-intro-effect h3.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
