@@ -1,1 +1,1 @@
-console.log("OK");
+(()=>{"use strict";var t;console.log("OK"),(t=jQuery)(window).on("scroll",(function(){t(".text-intro-effect").find("p, h1, h2, h3").each((function(){var e;(e=this.getBoundingClientRect()).top>=0&&e.left>=0&&e.bottom<=(window.innerHeight||document.documentElement.clientHeight)&&e.right<=(window.innerWidth||document.documentElement.clientWidth)&&t(this).addClass("visible")}))}))})();

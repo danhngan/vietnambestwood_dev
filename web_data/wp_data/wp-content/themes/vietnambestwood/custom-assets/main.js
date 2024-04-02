@@ -1,12 +1,11 @@
+// text effect
+
 (function main($) {
     $(window).on("scroll", function () {
     $(".text-intro-effect").find( "p, h1, h2, h3" ).each(function () {
         if (isElementInViewport(this)) {
             $(this).addClass("visible");
         }
-        // else {
-        //     $(this).removeClass("visible");
-        // }
     });
 });
 }

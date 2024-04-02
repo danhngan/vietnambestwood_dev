@@ -13,7 +13,7 @@
  * Register block styles.
  */
 
-include(__DIR__.'/widget/breadcrumb.php');
+// include(__DIR__.'/widget/breadcrumb.php');
 
 if (!function_exists('vietnambestwood_block_styles')) :
 	/**
@@ -248,3 +248,11 @@ add_action('wp_enqueue_scripts', 'register_vietnambestwood_font_styles');
 
 
 // Register style sheet.
+
+// function resgister_jquery() {
+// 	wp_register_script( 'jquery_google', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jqueryexample.min.js' , array(), '1.7.2');
+// 	wp_enqueue_script( 'jquery_google' );
+// }
+
+// add_action('wp_enqueue_scripts', 'wp_enqueue_script');
+

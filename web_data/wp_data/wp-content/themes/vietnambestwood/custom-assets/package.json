@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"no test\"",
     "start": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "scss": "node-sass --output-style compressed -o dist/styles src/styles"
   },
   "keywords": [
     "style"
