@@ -9,7 +9,7 @@
 function dnj_slider_render($block_attributes, $content) {
   return '<div class="slideshow-container">
 <!-- Full-width images with number and caption text -->
-<div class="mySlides fade">
+<div class="mySlides fade current">
   <div class="numbertext">1 / 3</div>
   <img src="/wp-content/uploads/2024/04/img_nature_wide.jpg" style="width:100%"/>
   <div class="text">Caption Text</div>
@@ -29,7 +29,7 @@ function dnj_slider_render($block_attributes, $content) {
 
 <!-- Next and previous buttons -->
 <a class="prev">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
+<a class="next">&#10095;</a>
 </div>
 <br>
 
