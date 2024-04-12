@@ -107,15 +107,16 @@ $table_prefix = getenv_docker('WORDPRESS_TABLE_PREFIX', 'wp_');
  *
  * @link https://wordpress.org/documentation/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', true );
+// define( 'WP_DEBUG', true );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
 // If we're behind a proxy server and using HTTPS, we need to alert WordPress of that fact
 // see also https://wordpress.org/support/article/administration-over-ssl/#using-a-reverse-proxy
-if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
-	$_SERVER['HTTPS'] = 'on';
-}
+if( strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false )
+   $_SERVER['HTTPS'] = 'on';
+else
+   $_SERVER['HTTPS'] = 'off';
 // (we include this by default because reverse proxying is extremely common in container environments)
 
 if ($configExtra = getenv_docker('WORDPRESS_CONFIG_EXTRA', '')) {
@@ -129,14 +130,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
 }
 
-define( 'WP_HOME', 'http://local.vietnambestwood.com' );
-define( 'WP_SITEURL', 'http://local.vietnambestwood.com' );
+define( 'WP_HOME', 'https://vietnambestwood.com' );
+define( 'WP_SITEURL', 'https://vietnambestwood.com' );
 // Enable WP_DEBUG mode
 // define( 'WP_DEBUG', true );
 
 // Enable Debug logging to the /wp-content/debug.log file
-define( 'WP_DEBUG_LOG', true );
-define( 'WP_DEBUG_DISPLAY', false );
+// define( 'WP_DEBUG_LOG', true );
+// define( 'WP_DEBUG_DISPLAY', false );
 define( 'FS_METHOD', 'direct' );
 /** Sets up WordPress vars and included files. */
+define('FORCE_SSL_ADMIN', true);
 require_once ABSPATH . 'wp-settings.php';

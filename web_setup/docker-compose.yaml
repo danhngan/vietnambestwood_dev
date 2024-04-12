@@ -4,9 +4,6 @@ services:
   wordpress:
     image: wordpress
     restart: always
-    ports:
-      - 80:80
-      - 443:443
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: web_user
@@ -19,10 +16,6 @@ services:
       - db_password
     networks:
       - web
-    deploy:
-      resources:
-        limits:
-          memory: 5000M
 
   db:
     image: mysql:5.7
@@ -42,8 +35,6 @@ services:
 
   phpadmin:
     image: phpmyadmin
-    ports:
-      - 8080:80
     depends_on:
       - wordpress
     environment:
@@ -52,9 +43,24 @@ services:
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
       PMA_HOST: db
       PMA_PORT: 3306
+      UPLOAD_LIMIT: 5000M
     secrets:
       - db_root_password
       - db_password
+    networks:
+      - web
+
+  nginx:
+    image: nginx
+    depends_on:
+      - wordpress
+      - db
+      - phpadmin
+    ports:
+      - 443:443
+      - 80:80
+    volumes:
+      - nginx:/etc/nginx/
     networks:
       - web
 
@@ -63,13 +69,19 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: "/home/ngan/workspace/vietnambestwood_dev/web_data/wp_data"
+      device: "../web_data/wp_data"
       o: bind
   db:
     driver: local
     driver_opts:
       type: none
-      device: "/home/ngan/workspace/vietnambestwood_dev/web_data/database"
+      device: "../web_data/database_core"
+      o: bind
+  nginx:
+    driver: local
+    driver_opts:
+      type: none
+      device: "../web_data/nginx"
       o: bind
 
 secrets:
